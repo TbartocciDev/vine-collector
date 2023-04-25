@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ wine.name }}</h1>
+    <p>ABV: {{ wine.abv }}%</p>
+    <p>Region: {{ wine.region }}</p>
+    <p>Dryness: {{ wine.dryness }}</p>
+    <p>Size: {{ wine.size }}</p>
+    <p>Type: {{ wine.type }}</p>
+    <p>Color: {{ wine.color }}</p>
+{% endblock %}

@@ -4,11 +4,13 @@
 
     {% for wine in wines %}
         <div class="card">
-            <div class="card-content">
-            <span class="card-title">{{ wine.name }}</span>
-            <p>{{ wine.type }}</p>
-            <p>{{ wine.region }}</p>
-            </div>
+            <a href="/wines/{{ wine.id }}">
+                <div class="card-content">
+                    <span class="card-title">{{ wine.name }}</span>
+                    <p>{{ wine.type }}</p>
+                    <p>{{ wine.region }}</p>
+                </div>
+            </a>
         </div>
     {% endfor %}
 {% endblock %}
