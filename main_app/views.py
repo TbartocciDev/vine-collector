@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Wine
 
 # Create your views here.
@@ -15,3 +16,16 @@ def wines_index(request):
 def wines_detail(request,wine_id):
     wine = Wine.objects.get(id=wine_id)
     return render(request, 'wines/detail.html', {'wine':wine})
+
+class WinesCreate(CreateView):
+    model = Wine
+    fields = '__all__'
+    success_url = '/wines/{wine_id}'
+
+class WineUpdate(UpdateView):
+    model = Wine
+    fields = '__all__'
+
+class WineDelete(DeleteView):
+    model = Wine
+    success_url = '/wines'

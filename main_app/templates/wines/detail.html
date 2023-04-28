@@ -7,4 +7,8 @@
     <p>Size: {{ wine.size }}</p>
     <p>Type: {{ wine.type }}</p>
     <p>Color: {{ wine.color }}</p>
+    <div class="card-action">
+        <a href="{% url 'wines_update' wine.id %}" class="btn">Edit</a>
+        <a href="{% url 'wines_delete' wine.id %}" class="btn">Delete</a>
+    </div>
 {% endblock %}
