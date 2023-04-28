@@ -11,4 +11,34 @@
         <a href="{% url 'wines_update' wine.id %}" class="btn">Edit</a>
         <a href="{% url 'wines_delete' wine.id %}" class="btn">Delete</a>
     </div>
+    <div class="col s6">
+        <form action="{% url 'add_solddate' wine.id %}" method="POST">
+            {% csrf_token %}
+            {{ solddate_form.as_p }}
+            <input type="submit" class="btn" value="Add Sold Date">
+          </form>
+        <table class="striped">
+          <thead>
+            <tr><th>Date</th><th>Quantity</th></tr>
+          </thead>
+          <tbody>
+            {% for solddate_set in cat.solddate_set.all %}
+              <tr>
+                <td>{{solddate_set.date}}</td>
+                <td>{{solddate_set.get_quantity_display}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <script>
+        const dateEl = document.getElementById('id_date');
+        // M is Materialize's global variable
+        M.Datepicker.init(dateEl, {
+            format: 'yyyy-mm-dd',
+            defaultDate: new Date(),
+            setDefaultDate: true,
+            autoClose: true
+        });
+      </script>
 {% endblock %}

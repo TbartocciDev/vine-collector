@@ -16,3 +16,12 @@ class Wine(models.Model):
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'wine_id': self.id})
+    
+class SoldDate(models.Model):
+    date = models.DateField('Sold Date')
+    quantity = models.IntegerField(max_length=3, default=1)
+
+    wine = models.ForeignKey(Wine, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.get_quantity_display()} on {self.date}"
